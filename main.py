@@ -6,12 +6,24 @@ def encoder(decoder_num):
     return encoded_num
 
 
-def decoded(encoded_num):
-    decoded_num=""
-    for i in str(encoded_num):
-        i=int(i)-3
-        decoded_num+=str(i)
-    return decoded_num
+def decoder(u_input):   # u_input stands for user input
+    d_password = ""
+    for i in range(0, len(u_input)):
+        decode_letter = int(u_input[i])
+        if 2 < decode_letter <= 9:
+            decode_letter -= 3
+        elif decode_letter == 0:
+            decode_letter = 7
+        elif decode_letter == 1:
+            decode_letter = 8
+        elif decode_letter == 2:
+            decode_letter = 9
+        else:   # This else statement is here in case a non-numeric character is an input
+            print("Incorrect value entered - Try again")
+            break
+        decode_letter = str(decode_letter)
+        d_password += decode_letter
+    return d_password  # d_password stands for decode password
 
 def menu():# set the menu
     while True:
